@@ -9,4 +9,4 @@ import { ItemRepository } from './items.repository';
   controllers: [itemsController],
   providers: [ItemService],
 })
-export class TasksModule {}
+export class ItemModule {}

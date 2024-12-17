@@ -9,30 +9,25 @@ import {
   Query,
 } from '@nestjs/common';
 import { CreateItemDto } from './dto/create-item.dto';
-import { GetTasksFilterDto } from './dto/get-tasks-filter.dto';
 import { ItemStatus } from './item-status.enum';
 import { ItemService } from './items.service';
-import { Item } from './item.entity';
+import { Items } from './item.entity';
 
-@Controller('items')
+@Controller('Items')
 export class itemsController {
   constructor(private itemService: ItemService) {}
 
-  // @Get()
-  // getTasks(@Query() filterDto: GetTasksFilterDto): Task[] {
-  //   if (Object.keys(filterDto).length) {
-  //     return this.tasksService.getTasksWithFilters(filterDto);
-  //   } else {
-  //     return this.tasksService.getAllTasks();
-  //   }
-  // }
+  @Get('/')
+  getItems(): Promise<Items[]> {
+    return this.itemService.getItems();
+  }
   @Get('/:id')
-  getTaskById(@Param('id') id: number): Promise<Item> {
-    return this.itemService.getItemById(id);
+  getItemById(@Param('id') id: string): Promise<Items> {
+    return this.itemService.getItemById(parseInt(id));
   }
 
   @Post()
-  createTask(@Body() CreateItemDto: CreateItemDto): Promise<Item> {
+  createTask(@Body() CreateItemDto: CreateItemDto): Promise<Items> {
     return this.itemService.createItem(CreateItemDto);
   }
 

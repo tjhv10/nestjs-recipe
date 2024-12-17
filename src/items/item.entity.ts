@@ -2,14 +2,14 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { ItemStatus } from './item-status.enum';
 
 @Entity()
-export class Item {
+export class Items {
   @PrimaryGeneratedColumn()
-  id: number;
+  Id: number;
   @Column()
   Name: string;
 
   @Column()
-  Upload_date: string;
+  Upload_date: Date;
 
   @Column()
   Description: string;

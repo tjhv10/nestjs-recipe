@@ -1,10 +1,14 @@
 import { Module } from '@nestjs/common';
-import { TasksModule } from './tasks/items.module';
+import { ItemModule } from './items/items.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CategoiesModule } from './categories/categories.module';
+import { Item_CategoiesModule } from './Item_Category/Item_Category.module';
 
 @Module({
   imports: [
-    TasksModule,
+    ItemModule,
+    CategoiesModule,
+    Item_CategoiesModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -13,7 +17,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       password: '02082003',
       database: 'Items',
       autoLoadEntities: true,
-      synchronize: true,
+      // synchronize: true,
     }),
   ],
 })
