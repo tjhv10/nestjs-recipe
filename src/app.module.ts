@@ -2,13 +2,13 @@ import { Module } from '@nestjs/common';
 import { ItemModule } from './items/items.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CategoiesModule } from './categories/categories.module';
-import { Item_CategoiesModule } from './Item_Category/Item_Category.module';
+import { Item_CategoriesModule } from './Item_Category/Item_Category.module';
 
 @Module({
   imports: [
     ItemModule,
     CategoiesModule,
-    Item_CategoiesModule,
+    Item_CategoriesModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',

@@ -8,5 +8,9 @@ import { Item_CategoryRepository } from './Item_Category.repository';
   imports: [TypeOrmModule.forFeature([Item_CategoryRepository])],
   controllers: [Items_CategoriesController],
   providers: [Items_CategoriesService],
+  exports: [
+    Items_CategoriesService,
+    TypeOrmModule.forFeature([Item_CategoryRepository]),
+  ],
 })
-export class Item_CategoiesModule {}
+export class Item_CategoriesModule {}
