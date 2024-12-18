@@ -15,7 +15,7 @@ export class Items {
   Description: string;
 
   @Column()
-  Price: string;
+  Price: number;
 
   @Column()
   Seller_name: string;

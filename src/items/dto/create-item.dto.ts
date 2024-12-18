@@ -5,7 +5,7 @@ export class CreateItemDto {
   Name: string;
   Upload_date: Date;
   Description: string;
-  Price: string;
+  Price: number;
   Seller_name: string;
   Image_url: string;
   Status: ItemStatus;

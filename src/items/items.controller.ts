@@ -25,22 +25,30 @@ export class itemsController {
   getItemById(@Param('id') id: string): Promise<Items> {
     return this.itemService.getItemById(parseInt(id));
   }
+  @Get('/isIdExist/:id')
+  isIdExist(@Param('id') id: string): Promise<boolean> {
+    return this.itemService.isIdExist(parseInt(id));
+  }
 
   @Post()
   createTask(@Body() CreateItemDto: CreateItemDto): Promise<Items> {
     return this.itemService.createItem(CreateItemDto);
   }
 
-  // @Delete('/:id')
-  // deleteTask(@Param('id') id: string): void {
-  //   return this.tasksService.deleteTask(id);
-  // }
+  @Delete('/:id')
+  deleteTask(@Param('id') id: number): Promise<void> {
+    return this.itemService.deleteItem(id);
+  }
 
-  // @Patch('/:id/status')
-  // updateTaskStatus(
-  //   @Param('id') id: string,
-  //   @Body('status') status: TaskStatus,
-  // ): Task {
-  //   return this.tasksService.updateTaskStatus(id, status);
-  // }
+  @Patch('/:id/status')
+  updateTaskStatus(@Param('id') id: number): Promise<Items> {
+    return this.itemService.updateItemStatus(id, ItemStatus.DISABELD);
+  }
+  @Patch('/:id/:price')
+  updateItemPrice(
+    @Param('id') id: number,
+    @Param('price') price: number,
+  ): Promise<Items> {
+    return this.itemService.updateItemPrice(id, price);
+  }
 }
